@@ -110,8 +110,9 @@ public class ActivityConsultaOrcamento extends AppCompatActivity {
 
     }
 
-    private void AddToGrid(Orcamento orc){
-        DataTable.DataRow drRow = dtS.newRow();
+    private void AddToGrid(Orcamento orcamento){
+        DataTable.DataRow drRow;
+        drRow = dtS.newRow();
 
         drRow.set(COL_CODIGO, orcamento.getCodOrcamento());
         drRow.set(DATA,orcamento.getData());
@@ -120,10 +121,8 @@ public class ActivityConsultaOrcamento extends AppCompatActivity {
         drRow.set(COD_FUNCIONARIO,orcamento.getCodFuncionario());
         drRow.set(VALOR,orcamento.getValor());
 
-
         this.dtS.add(drRow);
         this.dg.refresh();
-
 
     }
 
@@ -160,7 +159,6 @@ public class ActivityConsultaOrcamento extends AppCompatActivity {
                 orcamento.setNmCliente(select.getString("LEFT"));
                 orcamento.setCodFuncionario(select.getString("FUNCIONARIO_ID"));
                 orcamento.setValor(select.getString("VALOR_TOTAL"));
-                AddToGrid(orcamento);
             }
             select.close();
             temRes = sts.getMoreResults();

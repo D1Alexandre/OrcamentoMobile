@@ -32,7 +32,6 @@ import java.util.Properties;
 
 public class ActivityOrcamentoCliente extends AppCompatActivity {
 
-    private String caminho;
     private Properties prop;
     Button btnConsulta;
     Button btnVend;
@@ -132,13 +131,14 @@ public class ActivityOrcamentoCliente extends AppCompatActivity {
 
     private void setaResultado(){
         txtNm = (TextView) findViewById(R.id.txtNmCli);
-        //txtCod = (TextView) findViewById(R.id.txtCod);
+        edtVend = (EditText) findViewById(R.id.edtVend);
         btnConsulta = (Button) findViewById(R.id.btnConsulta);
         btnConsulta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 txtNm.setText(ConsultaCli()[0]);
                 txtNm.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
+                edtVend.requestFocus();
                 passaCli();
             }
         });

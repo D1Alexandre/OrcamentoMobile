@@ -4,6 +4,7 @@ import android.app.ActivityGroup;
 import android.app.LocalActivityManager;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.widget.TabHost;
 
 
@@ -41,7 +42,5 @@ public class ActivityOrcamento extends ActivityGroup {
         abas.addTab(descAba3);
 
     }
-
-
 
 }

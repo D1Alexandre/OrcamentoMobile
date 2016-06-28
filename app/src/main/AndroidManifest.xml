@@ -13,8 +13,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:screenOrientation="portrait">
+        android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
@@ -25,13 +24,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ActivityConfiguraBanco" />
-        <activity android:name=".ActivityOrcamento" />
-        <activity android:name=".ActivityOrcamentoCliente" />
-        <activity android:name=".ActivityOrcamentoItens" />
-        <activity android:name=".ActivityPesqProd" />
-        <activity android:name=".ActivityOrcamentoTotais" />
-        <activity android:name=".ActivityConsultaOrcamento"></activity>
+        <activity android:name=".ActivityConfiguraBanco"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ActivityOrcamento"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ActivityOrcamentoCliente"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ActivityOrcamentoItens"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ActivityPesqProd"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ActivityOrcamentoTotais"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ActivityConsultaOrcamento"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

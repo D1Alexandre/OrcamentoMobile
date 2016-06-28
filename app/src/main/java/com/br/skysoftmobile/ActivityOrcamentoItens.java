@@ -153,8 +153,6 @@ public class ActivityOrcamentoItens extends AppCompatActivity {
             drRow.set(QTD, String.valueOf(produto.getQtd()));
             drRow.set(TOT, String.valueOf(prTot.doubleValue()));
 
-
-
             this.dtS.add(drRow);
             this.dg.refresh();
         }
@@ -195,8 +193,6 @@ public class ActivityOrcamentoItens extends AppCompatActivity {
                 else{
                     produto.setQtd(Integer.parseInt(edtQtd.getText().toString()));
                 }
-
-
 
             }
             select.close();

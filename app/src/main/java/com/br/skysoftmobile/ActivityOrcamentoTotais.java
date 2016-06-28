@@ -233,10 +233,10 @@ public class ActivityOrcamentoTotais extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 Intent intent = new Intent(ActivityOrcamentoTotais.this,ActivityOrcamentoCliente.class);
+                finish();
                 startActivity(intent);
             }
         });
-
         alerta.show();
     }
 
