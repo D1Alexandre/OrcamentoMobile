@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.br.skysoftmobile.ActivityOrcamentoItens">
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/edtItOrcamento"
+        android:hint="CODIGO DO PRODUTO"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/BtnAddIt"
+        android:layout_alignBottom="@+id/editText"
+        android:layout_toLeftOf="@+id/BtnAddIt" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ADCIONAR"
+        android:id="@+id/BtnAddIt"
+        android:layout_below="@+id/edtItOrcamento"
+        android:layout_alignRight="@+id/btnPesqProd"
+        android:layout_alignEnd="@+id/btnPesqProd" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="..."
+        android:id="@+id/btnPesqProd"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText"
+        android:layout_alignBottom="@+id/btnPesqProd"
+        android:layout_toRightOf="@+id/edtItOrcamento"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/btnPesqProd"
+        android:layout_toStartOf="@+id/btnPesqProd"
+        android:hint="QTD"
+        android:inputType="number" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/rgp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/edtItOrcamento"
+        android:layout_toStartOf="@+id/editText"
+        android:layout_alignRight="@+id/btnPesqProd"
+        android:layout_alignEnd="@+id/btnPesqProd"
+        android:layout_above="@+id/txtVal">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CODIGO"
+            android:id="@+id/rbCodigo" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="21dp"
+            android:text="COD. BARRAS"
+            android:id="@+id/rbCod"
+            android:layout_below="@+id/rbDesc" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DESCRIÇÃO"
+            android:id="@+id/rbDesc" />
+
+        <com.br.skysoftmobile.util.datagrid.DataGrid
+            android:layout_width="match_parent"
+            android:layout_height="355dp"
+            android:id="@+id/gridView"
+            android:layout_alignRight="@+id/BtnAddIt"
+            android:layout_alignEnd="@+id/BtnAddIt"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_above="@+id/txtTotal"
+            android:layout_alignTop="@+id/txtTotal" />
+
+    </RadioGroup>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="TOTAL :"
+        android:id="@+id/txtTotal"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/txtVal"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/BtnAddIt"
+        android:layout_toStartOf="@+id/BtnAddIt" />
+
+
+</RelativeLayout>
