@@ -1,5 +1,6 @@
 package com.br.skysoftmobile;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -77,6 +78,12 @@ public class ActivityOrcamentoItens extends AppCompatActivity {
         chamaActivity();
 
         AddItemNoGrid();
+
+        if(parametros.getCodPesq() != null){
+            edtParam = (EditText) findViewById(R.id.edtItOrcamento);
+            edtParam.setText(parametros.getCodPesq());
+        }
+
 
         dg.setLvOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
@@ -266,7 +273,7 @@ public class ActivityOrcamentoItens extends AppCompatActivity {
                             }
 
                             else{
-                                AddItem(pegaProd(ExecutaSelect("SELECT CODIGO,CODBARRA,LEFT(NOME,18),PRECO_VENDA FROM PRODUTOS WHERE NOME LIKE "+"\'"+"%"+edtParam.getText().toString()+"\'")));
+                                AddItem(pegaProd(ExecutaSelect("SELECT CODIGO,CODBARRA,LEFT(NOME,18),PRECO_VENDA FROM PRODUTOS WHERE NOME LIKE "+"\'"+"%"+edtParam.getText().toString().toUpperCase()+"\'")));
                             }
 
 
@@ -336,6 +343,5 @@ public class ActivityOrcamentoItens extends AppCompatActivity {
         }
 
     }
-
 
 }

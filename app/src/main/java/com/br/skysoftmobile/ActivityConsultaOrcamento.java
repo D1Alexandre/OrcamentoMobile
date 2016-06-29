@@ -159,6 +159,7 @@ public class ActivityConsultaOrcamento extends AppCompatActivity {
                 orcamento.setNmCliente(select.getString("LEFT"));
                 orcamento.setCodFuncionario(select.getString("FUNCIONARIO_ID"));
                 orcamento.setValor(select.getString("VALOR_TOTAL"));
+                AddToGrid(orcamento);
             }
             select.close();
             temRes = sts.getMoreResults();

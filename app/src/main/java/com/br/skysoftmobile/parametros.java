@@ -12,6 +12,16 @@ public class parametros {
     public static String Cliente;
     public static String Vendedor;
     public static String Total;
+
+    public static String getCodPesq() {
+        return codPesq;
+    }
+
+    public static void setCodPesq(String codPesq) {
+        parametros.codPesq = codPesq;
+    }
+
+    public static String codPesq;
     public static ArrayList<String> produtos;
     public static ArrayList<String> PrecProd;
     public static ArrayList<String> NmProd;

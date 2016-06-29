@@ -1,10 +1,17 @@
 package com.br.skysoftmobile;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
 
 import com.br.skysoftmobile.util.datagrid.DataGrid;
 import com.br.skysoftmobile.util.datatable.*;
@@ -29,15 +36,21 @@ public class ActivityPesqProd extends AppCompatActivity {
     private DataTable ds;
     public  DataGrid  dg;
     private Properties prop;
+    DataTable.DataRow drRow;
+
+    Button btnPesqProd;
+    EditText edtDesc;
 
     public prod produto = new prod();
-    public ActivityConfiguraBanco BD = new ActivityConfiguraBanco();
+    public parametros par = new parametros();
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pesq_prod);
+        btnPesqProd = (Button) findViewById(R.id.btnPesqProd);
 
         this.criaDataGrid();
 
@@ -51,19 +64,40 @@ public class ActivityPesqProd extends AppCompatActivity {
         dg.setDataSource(this.ds);
         dg.refresh();
 
-        try {
+        btnPesqProd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
-            if (ExecutaSelect() != null) {
-                AddProd(pegaProd(ExecutaSelect()));
+                try {
+
+                    if (ExecutaSelect() != null) {
+                        AddProd(pegaProd(ExecutaSelect()));
+                    }
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        });
 
+        dg.setLvOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View v, int i, long l) {
+                ViewGroup row = (ViewGroup) v.getParent();
+                for (int itemPos = 0; itemPos < row.getChildCount(); itemPos++) {
+                    View view = row.getChildAt(itemPos);
+                    view.setBackgroundColor(Color.WHITE);
+
+                }
+                return false;
+            }
+        });
 
     }
+
 
     private void criaDataGrid(){
         if (this.ds == null ){
@@ -74,6 +108,8 @@ public class ActivityPesqProd extends AppCompatActivity {
     }
 
     private PreparedStatement ExecutaSelect() throws IOException, SQLException {
+        edtDesc = (EditText) findViewById(R.id.edtDesc);
+        PreparedStatement sts;
         ConectaBanco Banco = new ConectaBanco();
         prop = new Properties();
         prop.put("user","SYSDBA");
@@ -81,8 +117,13 @@ public class ActivityPesqProd extends AppCompatActivity {
 
         Banco.ConectaBanco(pegaCaminnho(), prop);
 
+        if(edtDesc.getText().toString().isEmpty()){
+            sts = Banco.con.prepareStatement("SELECT CODIGO,CODBARRA,LEFT(NOME,18),PRECO_VENDA FROM PRODUTOS ORDER BY CODIGO");
+        }
 
-        PreparedStatement sts = Banco.con.prepareStatement("SELECT CODIGO,CODBARRA,LEFT(NOME,18),PRECO_VENDA FROM PRODUTOS ORDER BY CODIGO");
+        else{
+            sts = Banco.con.prepareStatement("SELECT CODIGO,CODBARRA,LEFT(NOME,18),PRECO_VENDA FROM PRODUTOS WHERE NOME LIKE \'%"+edtDesc.getText().toString().toUpperCase()+"%\'");
+        }
 
         return sts;
     }
